@@ -1,0 +1,33 @@
+.page{
+    padding: 10px;
+    width: 100%;
+   /* place-items: center; */
+   color: aliceblue;
+}
+.page p{
+background: var(--text-secondary);
+padding: 10px 30px ;
+border-radius: 5px;
+width: 100%;
+max-width: 400px;
+margin: 0 auto;
+}
+.page .example p{
+    cursor: pointer;
+}
+.page p:hover{
+background: var(--text-primary);
+
+}
+.heading{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    font-size: 1.3rem;
+    
+}
+
+@media screen and (min-width:900px) {
+    
+}
