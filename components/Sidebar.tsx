@@ -1,20 +1,54 @@
-'use client'
-import NewChat from './NewChat'
-import {FaTimes} from 'react-icons/fa'
-import { signOut, useSession } from 'next-auth/react'
+import React from 'react'
 
-import Modal from './Modal'
+
+
+import { useGlobalContext } from '../context';
+import ChatRow from './ChatRow'
+import NewChat from './NewChat';
+
 const Sidebar = () => {
-// const openModal = () => {
-// setIsModalOpen(true)
-// }
-  return (
+const{isSidebarOpen, setIsSidebarOpen} = useGlobalContext()
+let chats = [
+  {
+  id:11,
+  title:'What is Next.js'
+},
+  {
+  id:12,
+  title:'Using Typescript '
+},
+  {
+  id:13,
+  title:'Explain SSR'
+},
+  {
+  id:14,
+  title:'Error boundary in React'
+}
+]
+
+
+ 
+return (
     <>
-   <div className='bg-[var(--text-primary)] text-white fixed left-0 w-full max-w-xs min-h-full p-2  md:block'>
-  <NewChat/>
-  <span className='absolute right-[-3rem] top-2 text-2xl  border-[1px] border-[#777] p-2 rounded-sm md:hidden'><FaTimes/></span>
-  <div>
+     <div
+    className={`${
+      isSidebarOpen
+        ? " parent block z-40 top-0  fixed md:relative   "
+        : " hidden md:block  md:relative "
+    }`}
+  >
+ <div className= 'parent bg-[var(--text-primary)] overflow-y-scroll h-screen w-[280px] text-white   ' >
+ <NewChat/>
+  <div className=' grid gap-6  mt-6'>
+  {chats.map(c => {
+    
+      return <ChatRow key={c.id} text={c.title}  />
+    })}
   </div>
+ 
+  </div>
+  
 
 </div>
 </>

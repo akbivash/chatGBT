@@ -1,12 +1,15 @@
+import { useGlobalContext } from '@/context'
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
 import {GiHamburgerMenu} from 'react-icons/gi'
+
 const Topbar = () => {
+  const{isSidebarOpen, setIsSidebarOpen} = useGlobalContext()
   return (
-    <div className='fixed top-0 left-0 flex justify-between items-center text-xl w-full text-white px-4 py-2 border-b-[1px] border-b-[#777] md:hidden'>
-        <GiHamburgerMenu/>
+    <div className=' z-20  top-0 fixed w-full flex justify-between items-center text-xl  mx-auto text-white px-4 py-2 border-b-[1px] bg-[var(--text-secondary)] border-b-[var(--text-secondary-1)] md:hidden'>
+        <GiHamburgerMenu onClick={() => setIsSidebarOpen(true)} className='cursor-pointer' />
         New chat
-        <FaPlus/>
+        <FaPlus className='cursor-pointer'/>
     </div>
   )
 }
